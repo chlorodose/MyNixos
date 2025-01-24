@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: {
-  options.services.desktop = { enable = lib.mkEnableOption "desktop"; };
+  options.services.desktop.enable = lib.mkEnableOption "desktop";
   config = lib.mkIf config.services.desktop.enable {
     networking.networkmanager.enable = true;
     boot.kernelPackages = pkgs.linuxPackages_zen;
