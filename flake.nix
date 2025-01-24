@@ -31,13 +31,13 @@
   outputs = { nixpkgs, home-manager, agenix, impermanence, nixvim, ... }: {
     nixosConfigurations = let
       hmModules = [ nixvim.homeManagerModules.nixvim ]
-        ++ (nixpkgs.filesystem.listFilesRecursive ./modules/home-manager);
+        ++ (nixpkgs.lib.filesystem.listFilesRecursive ./modules/home-manager);
       nixosModules = [
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
         impermanence.nixosModules.impermanence
         { home-manager.sharedModules = hmModules; }
-      ] ++ (nixpkgs.filesystem.listFilesRecursive ./modules/nixos);
+      ] ++ (nixpkgs.lib.filesystem.listFilesRecursive ./modules/nixos);
     in {
       cl-server = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

@@ -14,7 +14,7 @@
     };
     environment.systemPackages =
       [ (pkgs.catppuccin-sddm.override { flavor = "mocha"; }) ];
-    environment.services.displayManager.defaultSession = "hyprland-uwsm";
+    services.displayManager.defaultSession = "hyprland-uwsm";
     programs.hyprland = {
       enable = true;
       withUWSM = true;

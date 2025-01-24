@@ -2,7 +2,7 @@
   options.user.gpg = {
     myKeys = lib.mkOption {
       default = [ ];
-      type = lib.types.listOf lib.path;
+      type = lib.types.listOf lib.types.path;
     };
   };
 

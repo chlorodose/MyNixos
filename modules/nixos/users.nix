@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: {
-  system.persistence.users = lib.mapAttrs (name: value: {
+  system.persistence.users = (lib.mapAttrs (name: value: {
     directories = [
       "Downloads"
       "Music"
@@ -9,7 +9,7 @@
       "Desktop"
       ".password-store"
     ];
-  }) (lib.filterAttrs (name: value: value.isNormalUser) config.users.users);
+  }) config.home-manager.users);
   programs.fish.enable = lib.any ({ value, ... }: value.shell == pkgs.fish)
     (lib.attrsToList config.users.users);
   programs.zsh.enable = lib.any ({ value, ... }: value.shell == pkgs.zsh)
