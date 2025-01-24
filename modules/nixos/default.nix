@@ -10,5 +10,6 @@
     ./nix.nix
     ./users.nix
     ./root.nix
+    ./chlorodose.nix
   ];
 }
