@@ -11,6 +11,7 @@
     ./users.nix
     ./root.nix
     ./chlorodose.nix
+    ./ddns.nix
     ./ups.nix
   ];
 }

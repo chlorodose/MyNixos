@@ -1,0 +1,24 @@
+{ config, lib, ... }: {
+  options.services.ddns.enable = lib.mkEnableOption "ddns service";
+
+  config = lib.mkIf config.services.ddns.enable {
+    age.secrets.cf-ddns = {
+      file = ../../secrets/cf-ddns.age;
+      mode = "400";
+      owner = "root";
+    };
+    services.ddclient = {
+      enable = true;
+      verbose = true;
+      interval = "10min";
+      ssl = true;
+      usev4 = "ifv4, if=wan";
+      usev6 = "ifv6, if=wan";
+      protocol = "cloudflare";
+      zone = "chlorodose.me";
+      username = "token";
+      passwordFile = config.age.secrets.cf-ddns.path;
+      domains = [ "home-ppp.chlorodose.me" ];
+    };
+  };
+}
