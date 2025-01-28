@@ -1,5 +1,13 @@
 { lib, pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ wget curl git gnupg ];
+  environment.systemPackages = with pkgs; [
+    wget
+    curl
+    git
+    gnupg
+    nix-fast-build
+    nix-eval-jobs
+    nix-output-monitor
+  ];
 
   nix.gc = {
     automatic = true;
