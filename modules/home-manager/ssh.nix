@@ -14,5 +14,10 @@
       lib.concatLines config.programs.ssh.authorizedKeys;
     home.file.".ssh/known_hosts".text =
       lib.concatLines config.programs.ssh.knownHosts;
+    programs.ssh.matchBlocks."github.com" = {
+      user = "git";
+      hostname = "github.com";
+      port = 443;
+    };
   };
 }
