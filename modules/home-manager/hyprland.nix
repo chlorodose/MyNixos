@@ -9,7 +9,7 @@
         "$appPrefix" = "uwsm app --";
         "$terminal" = "kitty";
         "$fileManager" = "dolphin";
-        "$menu" = "rofi -show drun";
+        "$menu" = ''rofi -show drun -run-command "uwsm app -- {cmd}"'';
         source = [ "${../../public/hyprland.conf}" ];
       };
     };
