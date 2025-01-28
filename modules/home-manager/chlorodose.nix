@@ -7,5 +7,9 @@
     programs.ssh.authorizedKeys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKF7rjnMuwq0bB/G4dXVSZHegO06qKm4BSBREUHml7Dp chlorodose <chlorodose@chlorodose.me>"
     ];
+    programs.git = {
+      userEmail = "chlorodose@chlorodose.me";
+      userName = "chlorodose";
+    };
   };
 }
