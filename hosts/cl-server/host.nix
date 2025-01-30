@@ -13,7 +13,8 @@
   services.ddns.enable = true;
   services.ups.enable = true;
   services.postgres.enable = true;
-  services.gitHomeLab.enable = true;
+  services.gitserver.enable = true;
   services.mc.enable = true;
   services.grafanas.enable = false;
+  services.prometh.enable = true;
 }

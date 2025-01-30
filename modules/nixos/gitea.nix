@@ -1,7 +1,7 @@
 { config, lib, ... }: {
-  options.services.gitHomeLab.enable = lib.mkEnableOption "gitea service";
+  options.services.gitserver.enable = lib.mkEnableOption "gitea service";
 
-  config = lib.mkIf config.services.gitHomeLab.enable {
+  config = lib.mkIf config.services.gitserver.enable {
     services.gitea = {
       enable = true;
       stateDir = "/srv/gitea";
