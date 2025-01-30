@@ -74,7 +74,7 @@
         "/etc/ssh/ssh_host_rsa_key"
         "/etc/ssh/ssh_host_rsa_key.pub"
       ];
-      directories = [ "/var/lib/nixos" ];
+      directories = [ "/var/lib/nixos" "/srv" ];
     };
     systemd.extraConfig = "DefaultDeviceTimeoutSec = 3s";
   };
