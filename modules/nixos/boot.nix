@@ -5,8 +5,7 @@
       configurationLimit = lib.mkDefault 32;
     };
     systemd.watchdog.runtimeTime = "30s";
-    boot.loader.efi.canTouchEfiVariables =
-      ((builtins.getEnv "NIX_INSTALLING") != "");
-    boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    boot.loader.efi.canTouchEfiVariables = true;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
   };
 }
