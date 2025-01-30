@@ -67,7 +67,7 @@
     postStart = "${pkgs.systemd}/bin/networkctl reconfigure wan";
   };
   age.secrets.ppp-wan = {
-    file = ../../secrets/ppp-wan.age;
+    file = ../../../secrets/ppp-wan.age;
     mode = "400";
     owner = "root";
   };
