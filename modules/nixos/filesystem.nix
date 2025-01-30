@@ -76,6 +76,7 @@
       ];
       directories = [ "/var/lib/nixos" "/srv" ];
     };
+    age.identityPaths = [ "/mnt/etc/ssh/ssh_host_ed25519_key" ];
     systemd.extraConfig = "DefaultDeviceTimeoutSec = 3s";
   };
 }
