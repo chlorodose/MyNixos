@@ -15,4 +15,5 @@
   services.postgres.enable = true;
   services.gitHomeLab.enable = true;
   services.mc.enable = true;
+  services.grafanas.enable = false;
 }
