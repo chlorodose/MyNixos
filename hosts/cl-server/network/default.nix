@@ -2,13 +2,13 @@
   imports = [ ./wan.nix ./lan.nix ];
   # Age
   age.secrets.wg-private = {
-    file = ../../secrets/wg-private.age;
+    file = ../../../secrets/wg-private.age;
     mode = "440";
     owner = "root";
     group = "systemd-network";
   };
   age.secrets.wg-ps-phone = {
-    file = ../../secrets/wg-ps-phone.age;
+    file = ../../../secrets/wg-ps-phone.age;
     mode = "440";
     owner = "root";
     group = "systemd-network";
