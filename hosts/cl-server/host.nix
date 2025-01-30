@@ -1,8 +1,9 @@
 { ... }: {
   imports = [ ./network ];
+  networking.hostName = "cl-server";
   users.chlorodose = {
     enable = true;
-    isAdmin = true;
+    #isAdmin = true;
   };
   services.desktop.enable = false;
   home-manager.users.chlorodose = { ... }: { imports = [ ./chlorodose.nix ]; };
