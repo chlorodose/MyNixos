@@ -40,7 +40,7 @@
         };
         files = {
           "config/exporter.properties" = {
-            value = { server-port = 8080; };
+            value = { server-port = 25585; };
           };
         };
       };
