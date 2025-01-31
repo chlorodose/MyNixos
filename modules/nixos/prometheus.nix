@@ -14,22 +14,28 @@
           listenAddress = "127.0.0.80";
           port = 9000;
           enabledCollectors = [ "systemd" ];
-          extraFlags = [ "--collector.ethtool" "--collector.softirqs" "--collector.tcpstat" ];
+          extraFlags = [
+            "--collector.ethtool"
+            "--collector.softirqs"
+            "--collector.tcpstat"
+          ];
         };
       };
       scrapeConfigs = [
-      {
-        job_name = "node";
-        static_configs = [{
-          targets = [ "${config.services.prometheus.exporters.node.listenAddress}:${toString config.services.prometheus.exporters.node.port}" ];
-        }];
-      }
-      {
-        job_name = "minecraft-server";
-        static_configs = [{
-          targets = [ "127.0.0.1:25585" ];
-        }];
-      }
+        {
+          job_name = "node";
+          static_configs = [{
+            targets = [
+              "${config.services.prometheus.exporters.node.listenAddress}:${
+                toString config.services.prometheus.exporters.node.port
+              }"
+            ];
+          }];
+        }
+        {
+          job_name = "minecraft-server";
+          static_configs = [{ targets = [ "127.0.0.1:25585" ]; }];
+        }
       ];
     };
   };

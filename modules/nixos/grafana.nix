@@ -20,7 +20,10 @@
     };
     services.nginx.enable = true;
     services.nginx.locations."/grafana/" = {
-      proxyPass = "http://${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}";
+      proxyPass =
+        "http://${config.services.grafana.settings.server.http_addr}:${
+          toString config.services.grafana.settings.server.http_port
+        }";
       proxyWebsockets = true;
       recommendedProxySettings = true;
     };

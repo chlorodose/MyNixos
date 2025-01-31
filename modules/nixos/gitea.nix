@@ -21,7 +21,9 @@
     };
     services.nginx.enable = true;
     services.nginx.locations."/gitea/" = {
-      proxyPass = "http://${config.services.gitea.settings.server.HTTP_ADDR}:${toString config.services.gitea.settings.server.HTTP_PORT}";
+      proxyPass = "http://${config.services.gitea.settings.server.HTTP_ADDR}:${
+          toString config.services.gitea.settings.server.HTTP_PORT
+        }";
       proxyWebsockets = true;
       recommendedProxySettings = true;
     };
