@@ -26,9 +26,15 @@
         home-manager.follows = "home-manager";
       };
     };
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
-  outputs = { nixpkgs, home-manager, agenix, impermanence, nixvim, ... }: {
+  outputs = { nixpkgs, home-manager, agenix, impermanence, nixvim, nix-minecraft, ... }: {
     nixosConfigurations = let
       hmModules = [ nixvim.homeManagerModules.nixvim ]
         ++ (nixpkgs.lib.filesystem.listFilesRecursive ./modules/home-manager);
@@ -37,6 +43,10 @@
         agenix.nixosModules.default
         impermanence.nixosModules.impermanence
         { home-manager.sharedModules = hmModules; }
+        {
+          imports = [ nix-minecraft.nixosModules.minecraft-servers ];
+          nixpkgs.overlays = [ nix-minecraft.overlay ];
+        }
       ] ++ (nixpkgs.lib.filesystem.listFilesRecursive ./modules/nixos);
     in {
       cl-server = nixpkgs.lib.nixosSystem {
