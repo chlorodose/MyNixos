@@ -9,7 +9,7 @@
     };
 
     agenix = { # 密码管理
-      url = "github:ryantm/agenix/main";
+      url = "github:yaxitech/ragenix/main";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
@@ -26,7 +26,7 @@
         home-manager.follows = "home-manager";
       };
     };
-    nix-minecraft = {
+    nix-minecraft = { # 配置MC服务器
       url = "github:Infinidoge/nix-minecraft";
       inputs = {
         nixpkgs.follows = "nixpkgs";
