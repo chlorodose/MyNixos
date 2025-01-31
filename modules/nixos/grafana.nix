@@ -11,11 +11,18 @@
         host = "/run/postgresql";
       };
       settings.server = {
-        http_addr = "0.0.0.0";
-        domain = "192.168.0.1";
+        http_addr = "127.0.0.81";
         http_port = 3001;
-        root_url = "http://192.168.0.1:3001/";
+        domain = "192.168.0.1";
+        root_url = "http://192.168.0.1/grafana/";
+        serve_from_sub_path = true;
       };
+    };
+    services.nginx.enable = true;
+    services.nginx.locations."/grafana/" = {
+      proxyPass = "http://${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}";
+      proxyWebsockets = true;
+      recommendedProxySettings = true;
     };
   };
 }
