@@ -24,6 +24,12 @@
           targets = [ "${config.services.prometheus.exporters.node.listenAddress}:${toString config.services.prometheus.exporters.node.port}" ];
         }];
       }
+      {
+        job_name = "minecraft-server";
+        static_configs = [{
+          targets = [ "127.0.0.1:25585" ];
+        }];
+      }
       ];
     };
   };
