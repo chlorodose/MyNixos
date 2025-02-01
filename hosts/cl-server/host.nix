@@ -18,4 +18,5 @@
   services.grafanas.enable = true;
   services.prometh.enable = true;
   services.mediaserver.enable = false;
+  services.nCloud.enable = true;
 }
