@@ -19,4 +19,5 @@
   services.prometh.enable = true;
   services.mediaserver.enable = false;
   services.nCloud.enable = true;
+  services.dnserver.enable = true;
 }
