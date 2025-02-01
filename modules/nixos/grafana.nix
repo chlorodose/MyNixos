@@ -13,13 +13,13 @@
       settings.server = {
         http_addr = "127.0.0.81";
         http_port = 3001;
-        domain = "192.168.0.1";
-        root_url = "http://192.168.0.1/grafana/";
+        domain = "grafana.local";
+        root_url = "http://grafana.local/";
         serve_from_sub_path = true;
       };
     };
     services.nginx.enable = true;
-    services.nginx.locations."/grafana/" = {
+    services.nginx.virtualHosts."grafana.local".locations."/" = {
       proxyPass =
         "http://${config.services.grafana.settings.server.http_addr}:${
           toString config.services.grafana.settings.server.http_port

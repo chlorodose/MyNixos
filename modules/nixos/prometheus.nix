@@ -5,7 +5,7 @@
     services.prometheus = {
       enable = true;
       stateDir = "prometheus";
-      listenAddress = "127.0.0.80";
+      listenAddress = "0.0.0.0";
       port = 8080;
       globalConfig.scrape_interval = "10s";
       exporters = {
@@ -35,6 +35,10 @@
         {
           job_name = "minecraft-server";
           static_configs = [{ targets = [ "127.0.0.1:25585" ]; }];
+        }
+        {
+          job_name = "unbound";
+          static_configs = [{ targets = [ "127.0.0.80:9167" ]; }];
         }
       ];
     };

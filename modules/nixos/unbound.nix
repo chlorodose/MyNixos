@@ -5,6 +5,7 @@
     services.resolved.enable = false;
     services.unbound = {
       enable = true;
+      localControlSocketPath = "/run/unbound/unbound.ctl";
       settings = {
         server = {
           statistics-interval = 10;
@@ -17,12 +18,18 @@
           log-queries = true;
           prefetch = true;
           prefetch-key = true;
-          local-zone = "\"service.\" static";
+          local-zone = "\"local.\" static";
           local-data = [
-            "\"nextcloud.service. 600 IN A 192.168.0.1\""
+            "\"nextcloud.local. 600 IN A 192.168.0.1\""
+            "\"grafana.local. 600 IN A 192.168.0.1\""
           ];
         };
       };
+    };
+    services.prometheus.exporters.unbound = {
+      enable = true;
+      unbound.host = "unix:///run/unbound/unbound.ctl";
+      listenAddress = "127.0.0.80";
     };
   };
 }
