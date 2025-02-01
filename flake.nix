@@ -12,7 +12,6 @@
       url = "github:yaxitech/ragenix/main";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
       };
     };
     impermanence = { # 管理状态
