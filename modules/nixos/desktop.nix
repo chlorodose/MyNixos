@@ -2,7 +2,7 @@
   options.services.desktop.enable = lib.mkEnableOption "desktop";
   config = lib.mkIf config.services.desktop.enable {
     networking.networkmanager.enable = true;
-    boot.kernelPackages = pkgs.linuxPackages_zen;
+    boot.kernelPackages = lib.mkForce pkgs.linuxPackages_zen;
     services.openssh.enable = false;
     fonts.enableDefaultPackages = true;
     fonts.packages = with pkgs; [ fira-code-nerdfont wqy_zenhei ];

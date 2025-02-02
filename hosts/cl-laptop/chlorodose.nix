@@ -7,6 +7,8 @@
   ];
   programs.git.userName = "chlorodose";
   programs.git.userEmail = "chlorodose@chlorodose.me";
+  programs.git.signing.key = "942DF679F2B394D4";
+  services.gpg-agent.enable = true;
 
   programs.vscode = {
     enable = true;

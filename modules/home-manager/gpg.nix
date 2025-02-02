@@ -23,5 +23,6 @@
       enableScDaemon = true;
       pinentryPackage = pkgs.pinentry-all;
     };
+    home.packages = [ pkgs.pinentry-all ];
   };
 }
