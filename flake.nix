@@ -53,11 +53,11 @@
     in {
       cl-server = lib.nixosSystem {
         system = "x86_64-linux";
-        modules = nixosModules ++ [ ./hosts/cl-server/host.nix ];
+        modules = nixosModules ++ [ (lib.getHost "cl-server") ];
       };
       cl-laptop = lib.nixosSystem {
         system =  "x86_64-linux";
-        modules = nixosModules ++ [ ./hosts/cl-laptop/host.nix ];
+        modules = nixosModules ++ [ (lib.getHost "cl-laptop") ];
       };
     };
   };

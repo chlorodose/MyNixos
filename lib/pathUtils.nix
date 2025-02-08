@@ -3,6 +3,7 @@ let
   lib = prev;
 in {
   getUser = lib.path.append ../users;
+  getHost = lib.path.append ../hosts;
   getAsset = lib.path.append ../assets;
   getSecret = p: lib.path.append ../secrets (p + ".age");
   scanPath = path:
