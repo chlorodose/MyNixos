@@ -33,10 +33,13 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, agenix, impermanence, nixvim, nix-minecraft, ... }: {
+  outputs = { nixpkgs, home-manager, agenix, impermanence, nixvim, nix-minecraft, ... }: 
+  let 
+    lib = nixpkgs.lib.fold (overlay: lib: lib.extend (import overlay)) nixpkgs.lib (nixpkgs.lib.filesystem.listFilesRecursive ./lib);
+  in {
     nixosConfigurations = let
       hmModules = [ nixvim.homeManagerModules.nixvim ]
-        ++ (nixpkgs.lib.filesystem.listFilesRecursive ./modules/home-manager);
+        ++ (lib.filesystem.listFilesRecursive ./modules/home-manager);
       nixosModules = [
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
@@ -46,13 +49,13 @@
           imports = [ nix-minecraft.nixosModules.minecraft-servers ];
           nixpkgs.overlays = [ nix-minecraft.overlay ];
         }
-      ] ++ (nixpkgs.lib.filesystem.listFilesRecursive ./modules/nixos);
+      ] ++ (lib.filesystem.listFilesRecursive ./modules/nixos);
     in {
-      cl-server = nixpkgs.lib.nixosSystem {
+      cl-server = lib.nixosSystem {
         system = "x86_64-linux";
         modules = nixosModules ++ [ ./hosts/cl-server/host.nix ];
       };
-      cl-laptop = nixpkgs.lib.nixosSystem {
+      cl-laptop = lib.nixosSystem {
         system = "x86_64-linux";
         modules = nixosModules ++ [ ./hosts/cl-laptop/host.nix ];
       };

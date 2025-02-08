@@ -1,14 +1,14 @@
-{ config, ... }: {
+{ config, lib, ... }: {
   imports = [ ./wan.nix ./lan.nix ];
   # Age
   age.secrets.wg-private = {
-    file = ../../../secrets/wg-private.age;
+    file = lib.getSecret "wg-private";
     mode = "440";
     owner = "root";
     group = "systemd-network";
   };
   age.secrets.wg-ps-phone = {
-    file = ../../../secrets/wg-ps-phone.age;
+    file = lib.getSecret "wg-ps-phone";
     mode = "440";
     owner = "root";
     group = "systemd-network";

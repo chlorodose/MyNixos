@@ -10,7 +10,7 @@
         "$terminal" = "kitty";
         "$fileManager" = "dolphin";
         "$menu" = ''rofi -show drun -run-command "uwsm app -- {cmd}"'';
-        source = [ "${../../public/hyprland.conf}" ];
+        source = [ "${lib.getAsset "hyprland.conf"}" ];
       };
     };
   };

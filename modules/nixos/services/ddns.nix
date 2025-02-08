@@ -3,7 +3,7 @@
 
   config = lib.mkIf config.services.ddns.enable {
     age.secrets.ddns-cf = {
-      file = ../../secrets/ddns-cf.age;
+      file = lib.getSecret "ddns-cf";
       mode = "400";
       owner = "root";
     };

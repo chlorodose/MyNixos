@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, lib, ... }: {
   systemd.network.networks."10-base-wan" = {
     matchConfig = { Name = "enp6s0"; };
     linkConfig = { Unmanaged = true; };
@@ -67,7 +67,7 @@
     postStart = "${pkgs.systemd}/bin/networkctl reconfigure wan";
   };
   age.secrets.ppp-wan = {
-    file = ../../../secrets/ppp-wan.age;
+    file = lib.getSecret "ppp-wan";
     mode = "400";
     owner = "root";
   };
