@@ -1,7 +1,10 @@
-{ ... }: {
+{ lib, ... }: {
+  imports = [
+    (lib.getUser "chlorodose")
+  ];
   networking.hostName = "cl-laptop";
-  users.chlorodose.enable = true;
-  services.desktop.enable = true;
-  home-manager.users.chlorodose = { ... }: { imports = [ ./chlorodose.nix ]; };
+  modules.desktop.enable = true;
+  modules.hyprland.enable = true;
+  modules.sddm.enable = true;
   system.stateVersion = "25.05";
 }

@@ -2,7 +2,7 @@ prev: final:
 let 
   lib = prev;
 in {
-  getModule = lib.path.append ../modules;
+  getUser = lib.path.append ../users;
   getAsset = lib.path.append ../assets;
   getSecret = p: lib.path.append ../secrets (p + ".age");
   scanPath = path:

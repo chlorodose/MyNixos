@@ -56,7 +56,7 @@
         modules = nixosModules ++ [ ./hosts/cl-server/host.nix ];
       };
       cl-laptop = lib.nixosSystem {
-        system = "x86_64-linux";
+        system =  "x86_64-linux";
         modules = nixosModules ++ [ ./hosts/cl-laptop/host.nix ];
       };
     };

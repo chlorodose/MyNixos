@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }: {
-  config = lib.mkIf (config.i18n.inputMethod.enabled == "fcitx5") {
+  options.modules.fcitx5.enable = lib.mkEnableOption "fcitx5";
+  config = lib.mkIf config.modules.fcitx5.enable {
+    i18n.inputMethod.enabled = "fcitx5";
     i18n.inputMethod.fcitx5.addons = with pkgs; [
       fcitx5-gtk
       fcitx5-chinese-addons

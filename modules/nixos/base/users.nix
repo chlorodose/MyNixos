@@ -9,8 +9,7 @@
       "Desktop"
     ];
   }) config.home-manager.users);
-  programs.fish.enable = lib.any ({ value, ... }: value.shell == pkgs.fish)
-    (lib.attrsToList config.users.users);
+  users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = lib.any ({ value, ... }: value.shell == pkgs.zsh)
     (lib.attrsToList config.users.users);
 }
