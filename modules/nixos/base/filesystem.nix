@@ -6,27 +6,11 @@
       "/mnt"
     ])
   ];
-  options = {
-    system.fs.swap = {
-      num = lib.mkOption {
-        type = lib.types.int;
-        default = 0;
-        description = "Number of swap devices";
-      };
-    };
-    system.fs.root = {
-      limit = lib.mkOption {
-        type = lib.types.str;
-        default = "4g";
-        description = "Limit maxium size of root tmpfs";
-      };
-    };
-  };
   config = {
     fileSystems."/" = {
       device = "none";
       fsType = "tmpfs";
-      options = [ "defaults" "size=${config.system.fs.root.limit}" ];
+      options = [ "defaults" "size=8g" ];
       neededForBoot = true;
     };
     fileSystems."/boot" = {
@@ -46,13 +30,12 @@
       ];
       neededForBoot = false;
     };
-    swapDevices = if config.system.fs.swap.num == 0 then
-      [ ]
-    else if config.system.fs.swap.num == 1 then [{
-      label = "swap";
-    }] else
-      lib.genList (x: { label = "swap${builtins.toString x}"; })
-      config.system.fs.swap.num;
+    zramSwap = {
+      enable = true;
+      algorithm = "zstd";
+      memoryPercent = 100;
+      writebackDevice = "/dev/disk/by-label/swap";
+    };
     fileSystems."/nix" = {
       label = "nix";
       fsType = "ext4";
@@ -64,6 +47,7 @@
       fsType = "bcachefs";
       neededForBoot = true;
     };
+    systemd.extraConfig = "DefaultDeviceTimeoutSec = 3s";
     system.persistence = {
       enable = true;
       hideMounts = true;
@@ -76,7 +60,5 @@
       ];
       directories = [ "/var/lib/nixos" "/srv" ];
     };
-    age.identityPaths = [ "/mnt/etc/ssh/ssh_host_ed25519_key" ];
-    systemd.extraConfig = "DefaultDeviceTimeoutSec = 3s";
   };
 }

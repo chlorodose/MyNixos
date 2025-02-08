@@ -5,7 +5,14 @@
     boot.kernelPackages = lib.mkForce pkgs.linuxPackages_zen;
     services.openssh.enable = false;
     fonts.enableDefaultPackages = true;
-    fonts.packages = with pkgs; [ fira-code-nerdfont wqy_zenhei ];
+    fonts.packages = with pkgs; [
+      material-design-icons
+      font-awesome
+      noto-fonts-emoji
+      nerd-fonts.symbols-only
+      wqy_zenhei
+      fira-code
+    ];
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;

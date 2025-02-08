@@ -7,9 +7,6 @@
       "Documents"
       "Videos"
       "Desktop"
-      ".password-store"
-      ".local"
-      ".var"
     ];
   }) config.home-manager.users);
   programs.fish.enable = lib.any ({ value, ... }: value.shell == pkgs.fish)
