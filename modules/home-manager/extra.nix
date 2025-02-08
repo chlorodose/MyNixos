@@ -13,7 +13,8 @@
     socat
     fastfetch
     nixd
-    nixfmt
+    # nixfmt
+    nixfmt-rfc-style
     nix-tree
     brightnessctl
     playerctl
