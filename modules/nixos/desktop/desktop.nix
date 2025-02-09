@@ -26,5 +26,13 @@
     security.rtkit.enable = true;
     security.polkit.enable = true;
     services.flatpak.enable = true;
+    system.persistence.users = (
+      lib.mapAttrs (name: value: {
+        directories = [
+          ".var"
+          ".local/share/flatpak"
+        ];
+      }) config.home-manager.users
+    );
   };
 }
