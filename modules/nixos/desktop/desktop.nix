@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   options.modules.desktop.enable = lib.mkEnableOption "desktop";
   config = lib.mkIf config.modules.desktop.enable {
     networking.networkmanager.enable = true;

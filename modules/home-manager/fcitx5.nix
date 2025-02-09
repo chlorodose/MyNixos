@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   options.modules.fcitx5.enable = lib.mkEnableOption "fcitx5";
   config = lib.mkIf config.modules.fcitx5.enable {
     i18n.inputMethod.enabled = "fcitx5";

@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   services.nginx = {
     virtualHosts."192.168.0.1" = {
       default = true;

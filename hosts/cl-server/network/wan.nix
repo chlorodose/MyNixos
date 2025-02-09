@@ -1,14 +1,26 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+{
   systemd.network.networks."10-base-wan" = {
-    matchConfig = { Name = "enp6s0"; };
-    linkConfig = { Unmanaged = true; };
+    matchConfig = {
+      Name = "enp6s0";
+    };
+    linkConfig = {
+      Unmanaged = true;
+    };
   };
   systemd.network.networks."10-wan" = {
     matchConfig = {
       Type = "ppp";
       Name = "wan";
     };
-    linkConfig = { RequiredForOnline = true; };
+    linkConfig = {
+      RequiredForOnline = true;
+    };
     networkConfig = {
       DHCP = "ipv6";
       LLMNR = false;
@@ -62,7 +74,9 @@
   systemd.services."pppd-wan" = {
     bindsTo = [ "sys-subsystem-net-devices-enp6s0.device" ];
     after = [ "sys-subsystem-net-devices-enp6s0.device" ];
-    serviceConfig = { Type = "notify"; };
+    serviceConfig = {
+      Type = "notify";
+    };
     preStart = "${pkgs.iproute2}/bin/ip link set enp6s0 up";
     postStart = "${pkgs.systemd}/bin/networkctl reconfigure wan";
   };

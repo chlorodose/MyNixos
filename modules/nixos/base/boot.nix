@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 32;

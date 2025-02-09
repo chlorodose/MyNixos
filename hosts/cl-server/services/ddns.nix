@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   age.secrets.ddns-cf = {
     file = lib.getSecret "ddns-cf";
     mode = "400";

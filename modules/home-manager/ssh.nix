@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   options.programs.ssh = {
     authorizedKeys = lib.mkOption {
       default = [ ];
@@ -10,10 +11,8 @@
     };
   };
   config = {
-    home.file.".ssh/authorized_keys".text =
-      lib.concatLines config.programs.ssh.authorizedKeys;
-    home.file.".ssh/known_hosts".text =
-      lib.concatLines config.programs.ssh.knownHosts;
+    home.file.".ssh/authorized_keys".text = lib.concatLines config.programs.ssh.authorizedKeys;
+    home.file.".ssh/known_hosts".text = lib.concatLines config.programs.ssh.knownHosts;
     programs.ssh.matchBlocks."github.com" = {
       user = "git";
       hostname = "github.com";

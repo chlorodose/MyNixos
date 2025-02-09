@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   services.postgresql = {
     enable = true;
     enableTCPIP = true;
@@ -8,10 +9,12 @@
       local all all peer
       host all all 192.168.0.0/24 password
     '';
-    ensureUsers = [{
-      name = "root";
-      ensureClauses.superuser = true;
-      ensureClauses.login = true;
-    }];
+    ensureUsers = [
+      {
+        name = "root";
+        ensureClauses.superuser = true;
+        ensureClauses.login = true;
+      }
+    ];
   };
 }

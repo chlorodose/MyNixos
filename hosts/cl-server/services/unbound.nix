@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   services.resolved.enable = lib.mkForce false;
   services.unbound = {
     enable = true;
@@ -7,8 +8,14 @@
       server = {
         statistics-interval = 10;
         extended-statistics = true;
-        interface = [ "0.0.0.0" "::0" ];
-        access-control = [ "0.0.0.0/0 allow_snoop" "::/0 allow_snoop" ];
+        interface = [
+          "0.0.0.0"
+          "::0"
+        ];
+        access-control = [
+          "0.0.0.0/0 allow_snoop"
+          "::/0 allow_snoop"
+        ];
         log-queries = true;
         prefetch = true;
         prefetch-key = true;

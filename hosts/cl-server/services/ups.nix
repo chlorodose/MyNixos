@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   options.services.ups.enable = lib.mkEnableOption "ups service";
 
   config = lib.mkIf config.services.ups.enable {
@@ -31,9 +37,18 @@
         DEADTIME = 5;
         NOCOMMWARNTIME = 30;
         NOTIFYFLAG = [
-          [ "ONLINE" "SYSLOG" ]
-          [ "ONBATT" "SYSLOG+WALL+EXEC" ]
-          [ "LOWBATT" "SYSLOG+WALL+EXEC" ]
+          [
+            "ONLINE"
+            "SYSLOG"
+          ]
+          [
+            "ONBATT"
+            "SYSLOG+WALL+EXEC"
+          ]
+          [
+            "LOWBATT"
+            "SYSLOG+WALL+EXEC"
+          ]
         ];
         POLLFREQ = 2;
         POLLFREQALERT = 1;

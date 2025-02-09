@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   services.prometheus = {
     enable = true;
     stateDir = "prometheus";
@@ -21,21 +22,21 @@
     scrapeConfigs = [
       {
         job_name = "node";
-        static_configs = [{
-          targets = [
-            "${config.services.prometheus.exporters.node.listenAddress}:${
-              toString config.services.prometheus.exporters.node.port
-            }"
-          ];
-        }];
+        static_configs = [
+          {
+            targets = [
+              "${config.services.prometheus.exporters.node.listenAddress}:${toString config.services.prometheus.exporters.node.port}"
+            ];
+          }
+        ];
       }
       {
         job_name = "minecraft-server";
-        static_configs = [{ targets = [ "127.0.0.1:25585" ]; }];
+        static_configs = [ { targets = [ "127.0.0.1:25585" ]; } ];
       }
       {
         job_name = "unbound";
-        static_configs = [{ targets = [ "127.0.0.80:9167" ]; }];
+        static_configs = [ { targets = [ "127.0.0.80:9167" ]; } ];
       }
     ];
   };

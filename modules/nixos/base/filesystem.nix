@@ -1,16 +1,23 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   imports = [
-    (lib.mkAliasOptionModule [ "system" "persistence" ] [
-      "environment"
-      "persistence"
-      "/mnt"
-    ])
+    (lib.mkAliasOptionModule
+      [ "system" "persistence" ]
+      [
+        "environment"
+        "persistence"
+        "/mnt"
+      ]
+    )
   ];
   config = {
     fileSystems."/" = {
       device = "none";
       fsType = "tmpfs";
-      options = [ "defaults" "size=8g" ];
+      options = [
+        "defaults"
+        "size=8g"
+      ];
       neededForBoot = true;
     };
     fileSystems."/boot" = {
@@ -58,7 +65,10 @@
         "/etc/ssh/ssh_host_rsa_key"
         "/etc/ssh/ssh_host_rsa_key.pub"
       ];
-      directories = [ "/var/lib/nixos" "/srv" ];
+      directories = [
+        "/var/lib/nixos"
+        "/srv"
+      ];
     };
   };
 }

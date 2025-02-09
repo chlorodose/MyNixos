@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   services.grafana = {
     enable = true;
     dataDir = "/srv/grafana";
@@ -17,9 +18,7 @@
   };
   services.nginx.enable = true;
   services.nginx.virtualHosts."grafana.local".locations."/" = {
-    proxyPass = "http://${config.services.grafana.settings.server.http_addr}:${
-        toString config.services.grafana.settings.server.http_port
-      }";
+    proxyPass = "http://${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}";
     proxyWebsockets = true;
     recommendedProxySettings = true;
   };

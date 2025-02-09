@@ -1,7 +1,13 @@
-{ ... }: {
-  networking.bridges.lan.interfaces = [ "ens4f0" "ens4f1" ];
+{ ... }:
+{
+  networking.bridges.lan.interfaces = [
+    "ens4f0"
+    "ens4f1"
+  ];
   systemd.network.networks."10-lan" = {
-    matchConfig = { Name = "lan"; };
+    matchConfig = {
+      Name = "lan";
+    };
     networkConfig = {
       Address = [ "192.168.0.1/24" ];
       LLDP = true;
@@ -39,6 +45,8 @@
         "_link_local" # "2606:4700:4700::1111"
       ];
     };
-    bridgeConfig = { ProxyARP = true; };
+    bridgeConfig = {
+      ProxyARP = true;
+    };
   };
 }

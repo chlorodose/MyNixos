@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.modules.sddm.enable = lib.mkEnableOption "sddm";
   config = lib.mkIf config.modules.sddm.enable {
     services.displayManager.sddm = {
@@ -7,8 +13,7 @@
       theme = "catppuccin-mocha";
       package = pkgs.kdePackages.sddm;
     };
-    environment.systemPackages =
-      [ (pkgs.catppuccin-sddm.override { flavor = "mocha"; }) ];
+    environment.systemPackages = [ (pkgs.catppuccin-sddm.override { flavor = "mocha"; }) ];
 
     services.displayManager.defaultSession = "hyprland-uwsm";
     modules.desktop.enable = true;

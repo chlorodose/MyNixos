@@ -1,4 +1,10 @@
-{ config, lib, osConfig, ... }: {
+{
+  config,
+  lib,
+  osConfig,
+  ...
+}:
+{
   home.username = "chlorodose";
   user.gpg.myKeys = [ (lib.getAsset "chlorodose_public.asc") ];
   programs.ssh.authorizedKeys = [
@@ -44,7 +50,9 @@
     plugins.lsp = {
       enable = true;
       inlayHints = true;
-      servers = { nixd.enable = true; };
+      servers = {
+        nixd.enable = true;
+      };
     };
     plugins.noice.enable = true;
     plugins.blink-cmp.enable = true;
