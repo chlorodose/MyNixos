@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   osConfig,
   ...
 }:
@@ -27,11 +28,29 @@
 
     };
   };
+  home.packages = with pkgs; [
+    z-lua
+  ];
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      starship init fish | source
+      set -U fish_escape_delay_ms 500
     '';
+    plugins = with pkgs.fishPlugins; [
+      {
+
+        name = "z";
+        src = z.src;
+      }
+      {
+        name = "sudope";
+        src = plugin-sudope.src;
+      }
+      {
+        name = "foreign-env";
+        src = foreign-env.src;
+      }
+    ];
   };
   programs.nushell.enable = true;
 
