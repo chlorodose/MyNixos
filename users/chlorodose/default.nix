@@ -20,9 +20,9 @@
   programs.fish.enable = true;
   environment.pathsToLink = [ "/share/fish" ];
   system.persistence.users.chlorodose = {
-    files = [
-      ".local/share/fish/fish_history"
-      ".local/share/z/data"
+    directories = [
+      ".local/share/fish"
+      ".local/share/z"
     ];
   };
 }
