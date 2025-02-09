@@ -4,8 +4,8 @@
     users.users.chlorodose = {
       isNormalUser = true;
       uid = 1000;
-      useDefaultShell = false;
-      shell = pkgs.zsh;
+      useDefaultShell = true;
+      # shell = pkgs.;
       extraGroups = lib.mkMerge [
         [ "wheel" ]
         (lib.mkIf config.networking.networkmanager.enable [ "networkmanager" ])
