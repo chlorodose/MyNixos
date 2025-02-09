@@ -15,7 +15,19 @@
   modules.kitty.enable = osConfig.modules.desktop.enable;
   modules.passwd.enable = osConfig.modules.desktop.enable;
 
-  programs.bash.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+
+    };
+  };
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      starship init fish | source
+    '';
+  };
+  programs.nushell.enable = true;
 
   programs.nixvim = {
     enable = true;
