@@ -6,6 +6,7 @@
       fcitx5-gtk
       fcitx5-chinese-addons
     ];
+    i18n.inputMethod.fcitx5.waylandFrontend = true;
     xdg.configFile = {
       "fcitx5/profile".text = ''
         [Groups/0]
