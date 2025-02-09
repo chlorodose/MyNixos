@@ -10,9 +10,7 @@
 
     agenix = { # 密码管理
       url = "github:yaxitech/ragenix/main";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs = { nixpkgs.follows = "nixpkgs"; };
     };
     impermanence = { # 管理状态
       url = "github:nix-community/impermanence/master";
@@ -27,38 +25,39 @@
     };
     nix-minecraft = { # 配置MC服务器
       url = "github:Infinidoge/nix-minecraft";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs = { nixpkgs.follows = "nixpkgs"; };
     };
   };
 
-  outputs = { nixpkgs, home-manager, agenix, impermanence, nixvim, nix-minecraft, ... }: 
-  let 
-    lib = nixpkgs.lib.fold (overlay: lib: lib.extend (import overlay)) nixpkgs.lib (nixpkgs.lib.filesystem.listFilesRecursive ./lib);
-  in {
-    nixosConfigurations = let
-      hmModules = [ nixvim.homeManagerModules.nixvim ]
-        ++ (lib.filesystem.listFilesRecursive ./modules/home-manager);
-      nixosModules = [
-        home-manager.nixosModules.home-manager
-        agenix.nixosModules.default
-        impermanence.nixosModules.impermanence
-        { home-manager.sharedModules = hmModules; }
-        {
-          imports = [ nix-minecraft.nixosModules.minecraft-servers ];
-          nixpkgs.overlays = [ nix-minecraft.overlay ];
-        }
-      ] ++ (lib.filesystem.listFilesRecursive ./modules/nixos);
+  outputs =
+    { nixpkgs, home-manager, agenix, impermanence, nixvim, nix-minecraft, ... }:
+    let
+      lib =
+        nixpkgs.lib.fold (overlay: lib: lib.extend (import overlay)) nixpkgs.lib
+        (nixpkgs.lib.filesystem.listFilesRecursive ./lib);
     in {
-      cl-server = lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = nixosModules ++ [ (lib.getHost "cl-server") ];
-      };
-      cl-laptop = lib.nixosSystem {
-        system =  "x86_64-linux";
-        modules = nixosModules ++ [ (lib.getHost "cl-laptop") ];
+      nixosConfigurations = let
+        hmModules = [ nixvim.homeManagerModules.nixvim ]
+          ++ (lib.filesystem.listFilesRecursive ./modules/home-manager);
+        nixosModules = [
+          home-manager.nixosModules.home-manager
+          agenix.nixosModules.default
+          impermanence.nixosModules.impermanence
+          { home-manager.sharedModules = hmModules; }
+          {
+            imports = [ nix-minecraft.nixosModules.minecraft-servers ];
+            nixpkgs.overlays = [ nix-minecraft.overlay ];
+          }
+        ] ++ (lib.filesystem.listFilesRecursive ./modules/nixos);
+      in {
+        cl-server = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = nixosModules ++ [ (lib.getHost "cl-server") ];
+        };
+        cl-laptop = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = nixosModules ++ [ (lib.getHost "cl-laptop") ];
+        };
       };
     };
-  };
 }

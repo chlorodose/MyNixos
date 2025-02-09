@@ -1,8 +1,5 @@
 { lib, ... }: {
-  imports = [
-    (lib.getUser "chlorodose")
-    ./hardware.nix
-  ];
+  imports = [ (lib.getUser "chlorodose") ./hardware.nix ];
   networking.hostName = "cl-laptop";
   modules.desktop.enable = true;
   modules.hyprland.enable = true;

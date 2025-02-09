@@ -9,7 +9,7 @@
     };
     environment.systemPackages =
       [ (pkgs.catppuccin-sddm.override { flavor = "mocha"; }) ];
-    
+
     services.displayManager.defaultSession = "hyprland-uwsm";
     modules.desktop.enable = true;
   };

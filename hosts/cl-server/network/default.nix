@@ -1,5 +1,5 @@
 { config, lib, ... }: {
-  imports = [ ./wan.nix ./lan.nix ];
+  imports = lib.scanPath ./.;
   # Age
   age.secrets.wg-private = {
     file = lib.getSecret "wg-private";

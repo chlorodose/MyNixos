@@ -1,8 +1,5 @@
 { lib, ... }: {
-  nix.settings.trusted-users = [
-    "root"
-    "@wheel"
-  ];
+  nix.settings.trusted-users = [ "root" "@wheel" ];
   users.mutableUsers = false;
   users.users.root.initialHashedPassword = lib.mkDefault
     "$y$j9T$iNRMnFbX3gUOEySDFlTlJ/$L7GCQgKKplsF3k4gBo6kG4fGJq6iVd.HX0iOfgWFSgD";
