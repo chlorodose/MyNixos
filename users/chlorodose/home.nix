@@ -21,7 +21,8 @@
   modules.fcitx5.enable = osConfig.modules.desktop.enable;
   modules.kitty.enable = osConfig.modules.desktop.enable;
   modules.passwd.enable = osConfig.modules.desktop.enable;
-
+  
+  programs.nix-index.enable = true;
   programs.starship = {
     enable = true;
     settings = {
