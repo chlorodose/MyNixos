@@ -12,6 +12,8 @@
         "Music"
         "Pictures"
         "Documents"
+        "Public"
+        "Templates"
         "Videos"
         "Desktop"
       ];

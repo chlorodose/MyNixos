@@ -23,6 +23,7 @@
     directories = [
       ".local/share/fish"
       ".local/share/z"
+      ".local/share/password-store"
     ];
   };
 }

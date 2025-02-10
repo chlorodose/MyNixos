@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
   options.modules.hyprland.enable = lib.mkEnableOption "hyprland";
   config = lib.mkIf config.modules.hyprland.enable {
