@@ -7,7 +7,7 @@
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = false; # for UWSM
-      xwayland.enable = false;
+      xwayland.enable = true;
       settings = {
         "$mod" = "SUPER";
         "monitor" = ",preferred,auto,auto";
