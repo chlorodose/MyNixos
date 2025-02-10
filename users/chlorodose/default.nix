@@ -25,6 +25,9 @@
       ".local/share/z" # z-lua
       ".local/share/password-store" # pass
       ".cache/nix-index" # nix-index
+      # VSCodium
+      ".vscode-oss"
+      ".config/VSCodium"
     ];
   };
 }
