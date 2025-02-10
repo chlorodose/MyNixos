@@ -25,6 +25,13 @@
           ''"grafana.local. 600 IN A 192.168.0.1"''
         ];
       };
+      forward-zone = [
+        {
+          name = ".";
+          forward-addr = "1.1.1.1";
+          forward-first = true;
+        }
+      ];
     };
   };
   services.prometheus.exporters.unbound = {
