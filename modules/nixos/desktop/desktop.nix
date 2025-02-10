@@ -25,5 +25,15 @@
     };
     security.rtkit.enable = true;
     security.polkit.enable = true;
+    services.flatpak.enable = true;
+    environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
+    system.persistence.users = (
+      lib.mapAttrs (name: value: {
+        directories = [
+          ".var"
+          ".local/share/flatpak"
+        ];
+      }) config.home-manager.users
+    );
   };
 }
