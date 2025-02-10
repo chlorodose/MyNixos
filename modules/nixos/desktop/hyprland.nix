@@ -7,5 +7,6 @@
       withUWSM = true;
     };
     programs.uwsm.enable = true;
+    programs.hyprlock.enable = true;
   };
 }
