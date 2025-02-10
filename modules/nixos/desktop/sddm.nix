@@ -11,7 +11,7 @@
       enable = true;
       wayland.enable = true;
       theme = "catppuccin-mocha";
-      package = lib.mkForce pkgs.kdePackages.sddm;
+      package = pkgs.kdePackages.sddm;
     };
     environment.systemPackages = [ (pkgs.catppuccin-sddm.override { flavor = "mocha"; }) ];
 
