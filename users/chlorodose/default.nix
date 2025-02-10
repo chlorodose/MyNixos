@@ -21,9 +21,10 @@
   environment.pathsToLink = [ "/share/fish" ];
   system.persistence.users.chlorodose = {
     directories = [
-      ".local/share/fish"
-      ".local/share/z"
-      ".local/share/password-store"
+      ".local/share/fish" # Fish
+      ".local/share/z" # z-lua
+      ".local/share/password-store" # pass
+      ".cache/nix-index" # nix-index
     ];
   };
 }
