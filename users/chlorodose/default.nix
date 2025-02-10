@@ -16,7 +16,7 @@
     ];
     hashedPassword = "$y$j9T$GQvgCF25j6Lbr5bqzVC.0/$91nrr2nAaNOI0M0BjQyFvPZzhgZblw0bkTiWm7ATe28";
   };
-  home-manager.users.chlorodose = import ./home.nix;
+  home-manager.users.chlorodose = import ./home;
   programs.fish.enable = true;
   environment.pathsToLink = [ "/share/fish" ];
   system.persistence.users.chlorodose = {
