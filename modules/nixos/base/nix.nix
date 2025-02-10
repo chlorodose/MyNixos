@@ -40,7 +40,6 @@
       preallocate-contents = true;
       require-drop-supplementary-groups = true;
       sandbox-fallback = false;
-      stalled-download-timeout = 60;
       sync-before-registering = true;
       use-cgroups = true;
       use-xdg-base-directories = true;
