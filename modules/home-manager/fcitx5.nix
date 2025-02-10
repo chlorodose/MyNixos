@@ -11,6 +11,7 @@
     i18n.inputMethod.fcitx5.addons = with pkgs; [
       fcitx5-gtk
       fcitx5-chinese-addons
+      catppuccin-fcitx5
     ];
     i18n.inputMethod.fcitx5.waylandFrontend = true;
     xdg.configFile = {
@@ -48,6 +49,9 @@
       "fcitx5/conf/cloudpinyin.conf".text = ''
         MinimumPinyinLength=3
         Backend=GoogleCN
+      '';
+      "fcitx5/conf/classicui.conf".text = ''
+        Theme=catppuccin-mocha-mauve
       '';
     };
   };
