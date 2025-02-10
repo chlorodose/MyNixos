@@ -1,4 +1,4 @@
-{ lib, osConfig, ... }: {
+{ pkgs, lib, osConfig, ... }: {
   home.username = "chlorodose";
   user.gpg.myKeys = [ (lib.getAsset "chlorodose_public.asc") ];
   programs.ssh.authorizedKeys = [
@@ -15,4 +15,9 @@
   modules.kitty.enable = osConfig.modules.desktop.enable;
   modules.passwd.enable = osConfig.modules.desktop.enable;
   programs.nix-index.enable = true;
+  programs.vscode = {
+    enable = osConfig.modules.desktop.enable;
+    package = pkgs.vscodium;
+  };
+  programs.firefox.enable = osConfig.modules.desktop.enable;
 }

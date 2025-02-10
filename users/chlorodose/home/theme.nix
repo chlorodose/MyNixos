@@ -4,7 +4,7 @@
     platformTheme = "gtk3";
     style = {
       package = pkgs.lightly-qt;
-      name = "lightly";
+      name = "Lightly";
     };
   };
   gtk = {
