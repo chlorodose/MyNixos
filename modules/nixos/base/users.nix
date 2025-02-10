@@ -17,6 +17,9 @@
         "Videos"
         "Desktop"
       ];
+      files = [
+        ".ssh/known_hosts"
+      ];
     }) config.home-manager.users
   );
 }
