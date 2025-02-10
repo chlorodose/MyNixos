@@ -26,7 +26,24 @@
   programs.starship = {
     enable = true;
     settings = {
-
+      format = "$os$shell$all$line_break$character";
+      add_newline = false;
+      memory_usage = {
+        disabled = false;
+        threshold = 50;
+        symbol = " ";
+        style = "bold dimmed red";
+      };
+      shell = {
+        bash_indicator = " ";
+        fish_indicator = "󰈺 ";
+        nu_indicator = "_";
+        disabled = false;
+      };
+      os.disabled = false;
+      status.disabled = false;
+      time.disabled = false;
+      username.show_always = true;
     };
   };
   home.packages = with pkgs; [
@@ -54,6 +71,8 @@
     ];
   };
   programs.nushell.enable = true;
+  programs.bash.enable = true;
+
 
   programs.nixvim = {
     enable = true;
