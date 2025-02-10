@@ -31,12 +31,8 @@
       auto-allocate-uids = true;
       build-poll-interval = 1;
       build-users-group = "nixbld";
-      connect-timeout = 5;
-      download-attempts = 3;
       fallback = true;
-      http-connections = 0;
       max-jobs = "auto";
-      max-substitution-jobs = 64;
       preallocate-contents = true;
       require-drop-supplementary-groups = true;
       sandbox-fallback = false;
